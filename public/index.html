@@ -89,6 +89,9 @@ d"""    `""""""""""""Y:d8P                              8,          `b
     <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
     <meta name="msapplication-TileColor" content="#da532c">
     <meta name="theme-color" content="#ffffff">
+    <link rel='stylesheet' href='/build/bundle.css'>
+
+    <script defer src='/build/bundle.js'></script>
     <style>
         body {
             height: 100vh;
@@ -97,21 +100,22 @@ d"""    `""""""""""""Y:d8P                              8,          `b
             padding: 5vh 5vw;
             box-sizing: border-box;
             display: flex;
+            flex-direction: column;
             justify-content: center;
             align-items: center;
             font-size: 16px;
         }
-        svg {
+        .app-title {
             width: 100%;
         }
-        polyline {
+        .app-title polyline {
             stroke: #333;
             fill: transparent;
             stroke-width: 5;
             stroke-linecap: round;
             stroke-linejoin: round;
         }
-        ellipse {
+        .app-title ellipse {
             stroke: #333;
             fill: transparent;
             stroke-width: 5;
@@ -119,7 +123,7 @@ d"""    `""""""""""""Y:d8P                              8,          `b
     </style>
 </head>
 <body>
-    <svg viewBox="0 0 275 100" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
+    <svg viewBox="0 0 275 100" xmlns="http://www.w3.org/2000/svg" class="app-title" role="img" aria-labelledby="title desc">
         <title id="title">LMAO</title>
         <desc id="desc">Large dark grey text</desc>
         <polyline points="2.5 2.5 2.5 97.5 47.5 97.5" />
@@ -127,5 +131,7 @@ d"""    `""""""""""""Y:d8P                              8,          `b
         <polyline points="152.5 97.5 175 2.5 197.5 97.5" />
         <ellipse cx="250" cy="50" rx="22.5" ry="47.5" />
     </svg>
+
+    <main id="app"></main>
 </body>
 </html>
