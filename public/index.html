@@ -93,7 +93,13 @@ d"""    `""""""""""""Y:d8P                              8,          `b
 
     <script defer src='/build/bundle.js'></script>
     <style>
+        :root {
+            --primary: #333;
+            --white: #fff;
+        }
+
         body {
+            position: relative;
             height: 100vh;
             width: 100vw;
             margin: 0;
@@ -107,18 +113,23 @@ d"""    `""""""""""""Y:d8P                              8,          `b
         }
         .app-title {
             width: 100%;
+            padding: 3rem 0;
         }
         .app-title polyline {
-            stroke: #333;
+            stroke: var(--primary);
             fill: transparent;
             stroke-width: 5;
             stroke-linecap: round;
             stroke-linejoin: round;
         }
         .app-title ellipse {
-            stroke: #333;
+            stroke: var(--primary);
             fill: transparent;
             stroke-width: 5;
+        }
+        #app {
+            position: absolute;
+            bottom: 5vh;
         }
     </style>
 </head>
