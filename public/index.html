@@ -92,7 +92,8 @@ d"""    `""""""""""""Y:d8P                              8,          `b
     <style>
         :root {
             --primary: #333;
-            --white: #fff;
+            --background: #fff;
+            --ufo-size: 4rem;
         }
 
         body {
@@ -103,15 +104,16 @@ d"""    `""""""""""""Y:d8P                              8,          `b
             padding: 5vh 5vw;
             box-sizing: border-box;
             display: flex;
-            flex-direction: column;
             justify-content: center;
             align-items: center;
-            font-size: 16px;
+            background: var(--background);
         }
+
         .app-title {
             width: 100%;
             padding: 3rem 0;
         }
+
         .app-title polyline {
             stroke: var(--primary);
             fill: transparent;
@@ -119,21 +121,99 @@ d"""    `""""""""""""Y:d8P                              8,          `b
             stroke-linecap: round;
             stroke-linejoin: round;
         }
+
         .app-title ellipse {
             stroke: var(--primary);
             fill: transparent;
             stroke-width: 5;
         }
+
+        .x-mvmnt {
+            position: absolute;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            z-index: -1;
+            width: var(--ufo-size);
+            animation: moveX 4.7s linear infinite alternate;
+        }
+
+        .y-mvmnt {
+            height: var(--ufo-size);
+            width: 100%;
+            animation: moveY 40s linear infinite;
+        }
+
+        .ufo {
+            width: var(--ufo-size);
+            height: var(--ufo-size);
+            animation: blink 2.4s linear infinite alternate, hueRotate 5s linear infinite;
+        }
+
+        .ufo .ship {
+            fill: var(--primary);
+        }
+
+        .ufo .light {
+            color: #ea5645;
+            fill: currentColor;
+        }
+
+        @keyframes moveX {
+            from {
+                transform: translateX(0);
+            }
+            to {
+                transform: translateX(calc(100vw - var(--ufo-size)));
+            }
+        }
+
+        @keyframes moveY {
+            from {
+                transform: translateY(0);
+            }
+            to {
+                transform: translateY(calc(100vh - var(--ufo-size)));
+            }
+        }
+
+        @keyframes blink {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes hueRotate {
+            0% {
+                filter: hue-rotate(0deg);
+            }
+
+            100% {
+                filter: hue-rotate(360deg);
+            }
+        }
     </style>
 </head>
 <body>
-    <svg viewBox="0 0 275 100" xmlns="http://www.w3.org/2000/svg" class="app-title" role="img" aria-labelledby="title desc">
-        <title id="title">LMAO</title>
-        <desc id="desc">Large dark grey text</desc>
-        <polyline points="2.5 2.5 2.5 97.5 47.5 97.5" />
-        <polyline points="77.5 97.5 77.5 2.5 100 30 122.5 2.5 122.5 97.5" />
-        <polyline points="152.5 97.5 175 2.5 197.5 97.5" />
-        <ellipse cx="250" cy="50" rx="22.5" ry="47.5" />
-    </svg>
+<svg viewBox="0 0 275 100" xmlns="http://www.w3.org/2000/svg" class="app-title" role="img" aria-label="LMAO">
+    <polyline points="2.5 2.5 2.5 97.5 47.5 97.5" />
+    <polyline points="77.5 97.5 77.5 2.5 100 30 122.5 2.5 122.5 97.5" />
+    <polyline points="152.5 97.5 175 2.5 197.5 97.5" />
+    <ellipse cx="250" cy="50" rx="22.5" ry="47.5" />
+</svg>
+
+<div class="x-mvmnt">
+    <div class="y-mvmnt">
+        <svg class="ufo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 448" role="img" aria-label="UFO moving around the screen">
+            <path class="light" d="M224,344.828c-5.402,0-10.694-0.186-16-0.346v96.346h32v-96.346C234.694,344.642,229.402,344.828,224,344.828z" />
+            <path class="light" d="M61.206,314.635l-43.518,87.037l28.625,14.313l44.974-89.947C80.475,322.618,70.409,318.816,61.206,314.635z" />
+            <path class="light" d="M386.794,314.635c-9.202,4.181-19.269,7.983-30.08,11.402l44.974,89.947l28.625-14.313L386.794,314.635z" />
+            <path class="ship" d="M351.305,121.885C344.636,57.528,290.091,7.172,224,7.172S103.365,57.528,96.695,121.885C38.31,139.212,0,168.088,0,200.829c0,53.019,100.288,96,224,96s224-42.981,224-96C448,168.088,409.69,139.212,351.305,121.885zM88,232.829c-13.255,0-24-10.745-24-24s10.745-24,24-24c13.255,0,24,10.745,24,24C112,222.084,101.255,232.829,88,232.829zM180.61,129.79c2.919-4.771,13.021-3.906,22.562,1.934c9.541,5.839,14.909,14.439,11.99,19.21c-2.92,4.77-13.021,3.906-22.562-1.934C183.06,143.161,177.692,134.56,180.61,129.79z M224,264.829c-13.255,0-24-10.745-24-24s10.745-24,24-24c13.255,0,24,10.745,24,24S237.255,264.829,224,264.829z M255.316,149c-9.541,5.839-19.642,6.704-22.562,1.934c-2.919-4.77,2.45-13.371,11.991-19.21c9.541-5.839,19.642-6.705,22.562-1.934C270.226,134.56,264.857,143.161,255.316,149zM320.001,145.46L320.001,145.46c-11.81,8.434-29.52,15.147-50.622,19.186c5.806-12.053,9.802-25.608,9.85-39.898C279.376,80.235,243.303,69.18,224,69.18c-19.303,0-55.46,11.054-55.311,55.567c0.047,14.282,4.039,27.83,9.84,39.878c-21.059-4.041-38.738-10.744-50.528-19.166v-10.287c0-52.938,43.062-96,96-96s96,43.062,96,96V145.46z M360,232.829c-13.255,0-24-10.745-24-24s10.745-24,24-24s24,10.745,24,24C384,222.084,373.255,232.829,360,232.829z" />
+        </svg>
+    </div>
+</div>
 </body>
 </html>
