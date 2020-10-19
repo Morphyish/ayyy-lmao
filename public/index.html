@@ -92,7 +92,6 @@ d"""    `""""""""""""Y:d8P                              8,          `b
     <style>
         :root {
             --primary: #333;
-            --background: #fff;
             --ufo-size: 4rem;
         }
 
@@ -106,7 +105,7 @@ d"""    `""""""""""""Y:d8P                              8,          `b
             display: flex;
             justify-content: center;
             align-items: center;
-            background: var(--background);
+            overflow: hidden;
         }
 
         .app-title {
@@ -170,10 +169,10 @@ d"""    `""""""""""""Y:d8P                              8,          `b
 
         @keyframes moveY {
             from {
-                transform: translateY(0);
+                transform: translateY(calc(var(--ufo-size) * -1));
             }
             to {
-                transform: translateY(calc(100vh - var(--ufo-size)));
+                transform: translateY(100vh);
             }
         }
 
@@ -187,11 +186,11 @@ d"""    `""""""""""""Y:d8P                              8,          `b
         }
 
         @keyframes hueRotate {
-            0% {
+            from {
                 filter: hue-rotate(0deg);
             }
 
-            100% {
+            to {
                 filter: hue-rotate(360deg);
             }
         }
